@@ -78,9 +78,12 @@ public class VoiceRecognition : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        text.SetActive(false);
-        Debug.Log("Exiting The trigger");
-        keywordRecognizer.Stop();
+        if(other.gameObject.tag == "Player")
+        {
+            text.SetActive(false);
+            Debug.Log("Exiting The trigger");
+            keywordRecognizer.Stop();
+        }
     }
 
 }
