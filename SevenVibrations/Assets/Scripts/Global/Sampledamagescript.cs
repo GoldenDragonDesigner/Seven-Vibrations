@@ -5,9 +5,8 @@ using UnityEngine;
 public class Sampledamagescript : MonoBehaviour
 {
     GameObject player;
-    GameObject forcefield;
-    public float timer;
-    bool timeup;
+
+    public float damage;
 
     // Start is called before the first frame update
     void Start()
@@ -15,24 +14,16 @@ public class Sampledamagescript : MonoBehaviour
         player = GameObject.Find("Player");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DealDamage()
     {
-        timer -= Time.deltaTime;
-        timer = Mathf.Clamp(timer, 0, 10);
-        if (timer == 0)
-            timeup = true;
-        else timeup = false;
-        DealDamage(1);
+        player.GetComponent<HealthScript>().Damage(damage);
     }
 
-    void DealDamage(int damage)
+    private void OnTriggerEnter(Collider other)
     {
-        if(timeup == true)
+        if(other.gameObject == player)
         {
-            player.GetComponent<HealthScript>().Damage(1);
-            timer = 10;
+            DealDamage();
         }
     }
-
 }

@@ -2,34 +2,58 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Forcefield : Health
+public class Forcefield : MonoBehaviour
 {
-    [SerializeField]
-    float maxShield = 5;
-    float currentShield;
+    public Transform player;
+    public GameObject forcefield;
+    //AudioClip bubbleSound;
 
-    public DelOneParam onShieldHit = new DelOneParam();
-    public DelOneParam onShieldDestoryed = new DelOneParam();
+    private GameObject cloneForcefield;
 
-    public override void TakeDamage(float _amount)
+    private bool canSpawn = true;
+
+    //need a variable for using vibration
+
+    private void Update()
     {
-        if(currentShield == 0)
+        if(canSpawn && Input.GetKeyDown(KeyCode.K))
         {
-            base.TakeDamage(_amount);
-            return;
+            cloneForcefield = Instantiate(forcefield);
+            cloneForcefield.transform.position = player.position;
+            canSpawn = false;
         }
 
-        currentShield = Mathf.Min(currentShield - _amount, maxShield);
+        if (!canSpawn)
+        {
 
-        if(0 >= currentShield)
-        {
-            onShieldDestoryed.CallEvent(0);
-            base.TakeDamage(currentShield * -1.0f);
-            currentShield = 0;
-        }
-        else
-        {
-            onShieldHit.CallEvent(currentShield / maxShield);
         }
     }
+    //[SerializeField]
+    //float maxShield = 5;
+    //float currentShield;
+
+    //public DelOneParam onShieldHit = new DelOneParam();
+    //public DelOneParam onShieldDestoryed = new DelOneParam();
+
+    //public override void TakeDamage(float _amount)
+    //{
+    //    if(currentShield == 0)
+    //    {
+    //        base.TakeDamage(_amount);
+    //        return;
+    //    }
+
+    //    currentShield = Mathf.Min(currentShield - _amount, maxShield);
+
+    //    if(0 >= currentShield)
+    //    {
+    //        onShieldDestoryed.CallEvent(0);
+    //        base.TakeDamage(currentShield * -1.0f);
+    //        currentShield = 0;
+    //    }
+    //    else
+    //    {
+    //        onShieldHit.CallEvent(currentShield / maxShield);
+    //    }
+    //}
 }

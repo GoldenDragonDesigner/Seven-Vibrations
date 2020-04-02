@@ -7,16 +7,19 @@ public class Player : MonoBehaviour
     public Movement pm; //This is the variable for the player movement script
     public PlayerFollow pf;
 
+    public HealthScript playerHealth;
+
     public GameObject forcefield;
-
-    public int numberOfObjectsGlowing; //this is the variable for the player voice
-
-    public float curHeatlh = 100;
-    public float maxHealth = 100;
 
     private void Awake()
     {
         GlobalVariables.PLAYER = this;
+        playerHealth = GetComponent<HealthScript>();
+    }
+
+    private void Start()
+    {
+        forcefield.SetActive(false);
     }
 
     public void SavePlayer()
@@ -28,8 +31,7 @@ public class Player : MonoBehaviour
     {
         PlayerData data = SaveSystem.LoadPlayer();
 
-        numberOfObjectsGlowing = data.savedNumOfObjects;
-        curHeatlh = data.health;
+        //curHeatlh = data.health;
 
         Vector3 position;
         position.x = data.position[0];
@@ -37,5 +39,23 @@ public class Player : MonoBehaviour
         position.z = data.position[2];
 
         transform.position = position;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            forcefield.SetActive(true);
+            if(forcefield == true)
+            {
+                playerHealth.canhurt = false;
+                Debug.Log("Player taking no damage");
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            forcefield.SetActive(false);
+            playerHealth.canhurt = true;
+        }
     }
 }

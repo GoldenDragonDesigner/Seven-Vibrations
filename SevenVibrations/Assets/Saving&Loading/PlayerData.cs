@@ -6,15 +6,13 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData : MonoBehaviour
 {
-    public int savedNumOfObjects;
     public float health;
     public float[] position;
 
 
     public PlayerData(Player player)
     {
-        savedNumOfObjects = player.numberOfObjectsGlowing;
-        health = player.curHeatlh;
+        //health = player.playerHealth; //need to figure out a way to save the players health
 
         position = new float[3];
         position[0] = GlobalVariables.PLAYER.transform.position.x;

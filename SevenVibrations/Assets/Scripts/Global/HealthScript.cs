@@ -4,27 +4,29 @@ using UnityEngine;
 
 public class HealthScript : MonoBehaviour
 {
-    public int health;
+    public float maxHealth = 10;
+    public float curHealth;
     public bool canhurt = true;
 
     void Start()
     {
-        health = 10;
+        curHealth = maxHealth;
+        Debug.Log(curHealth);
     }
 
-    public void Damage(int damage)
+    public void Damage(float damage)
     {
         if (canhurt)
         {
-            health -= damage;
+            curHealth -= damage;
             Debug.Log("took " + damage + " damage.");
-            Debug.Log("Unit has " + health + " health remaining.");
+            Debug.Log("Unit has " + curHealth + " health remaining.");
         }
         else return;
     }
 
     void Update()
     {
-        health = Mathf.Clamp(health, 0, 10);
+        curHealth = Mathf.Clamp(curHealth, 0, 10);
     }
 }
