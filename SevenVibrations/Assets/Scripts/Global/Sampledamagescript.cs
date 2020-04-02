@@ -5,6 +5,7 @@ using UnityEngine;
 public class Sampledamagescript : MonoBehaviour
 {
     GameObject player;
+    GameObject forcefield;
     public float timer;
     bool timeup;
 
@@ -27,7 +28,7 @@ public class Sampledamagescript : MonoBehaviour
 
     void DealDamage(int damage)
     {
-            if(timeup == true)
+        if(timeup == true)
         {
             player.GetComponent<HealthScript>().Damage(1);
             timer = 10;

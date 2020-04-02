@@ -6,7 +6,8 @@ public class Player : MonoBehaviour
 {
     public Movement pm; //This is the variable for the player movement script
     public PlayerFollow pf;
-    
+
+    public GameObject forcefield;
 
     public int numberOfObjectsGlowing; //this is the variable for the player voice
 

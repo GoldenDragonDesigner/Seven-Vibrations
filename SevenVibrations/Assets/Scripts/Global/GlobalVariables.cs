@@ -6,7 +6,5 @@ public static class GlobalVariables
 {
     public static Player PLAYER;
 
-    public static Camera CAMERA;
-
-    
+    public static Camera CAMERA;    
 }
