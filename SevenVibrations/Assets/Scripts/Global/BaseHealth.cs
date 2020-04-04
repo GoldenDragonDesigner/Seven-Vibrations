@@ -6,23 +6,21 @@ using UnityEngine.UI;
 [System.Serializable]
 public class BaseHealth : MonoBehaviour
 {
-    [SerializeField]
     protected float curHealth;
 
     [SerializeField]
+    [Tooltip("This is the Units Max Health.")]
     protected float maxHealth;
 
     [SerializeField]
+    [Tooltip("Add the units Health Bar here")]
     protected Slider healthSlider;
-
-    [SerializeField]
-    protected bool canHurt = true;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         curHealth = maxHealth;
-        Debug.Log(curHealth);
+        healthSlider.value = CalculatingHealth();
     }
 
     // Update is called once per frame
@@ -34,15 +32,5 @@ public class BaseHealth : MonoBehaviour
     protected virtual float CalculatingHealth()
     {
         return (curHealth / maxHealth);
-    }
-
-    public void Damage(float damage)
-    {
-        if (canHurt)
-        {
-            curHealth -= damage;
-            Debug.Log("took " + damage + " damage.");
-            Debug.Log("Unit has " + curHealth + " health remaining.");
-        }
     }
 }

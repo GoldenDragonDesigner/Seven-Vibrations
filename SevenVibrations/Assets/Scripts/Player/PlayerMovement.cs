@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private Camera mainCamera;
 
-    private string ParamterState = "State";
+    //private string ParamterState = "State";
 
     private void Awake()
     {

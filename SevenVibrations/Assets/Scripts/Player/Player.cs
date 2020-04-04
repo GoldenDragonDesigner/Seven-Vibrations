@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Movement pm; //This is the variable for the player movement script
-    public PlayerFollow pf;
+    //public Movement pM;
 
-    public HealthScript playerHealth;
+    public PlayerMovement playerMove;
+
+    public PlayerHealth playerHealth;
 
     public GameObject forcefield;
 
     private void Awake()
     {
         GlobalVariables.PLAYER = this;
-        playerHealth = GetComponent<HealthScript>();
+        playerHealth = GetComponent<PlayerHealth>();
+
+        playerMove = GetComponent<PlayerMovement>();
+        //pm = GetComponent<Movement>();
     }
 
     private void Start()
@@ -48,14 +52,14 @@ public class Player : MonoBehaviour
             forcefield.SetActive(true);
             if(forcefield == true)
             {
-                playerHealth.canhurt = false;
+                playerHealth.canHurt = false;
                 Debug.Log("Player taking no damage");
             }
         }
         if (Input.GetKeyDown(KeyCode.U))
         {
             forcefield.SetActive(false);
-            playerHealth.canhurt = true;
+            playerHealth.canHurt = true;
         }
     }
 }

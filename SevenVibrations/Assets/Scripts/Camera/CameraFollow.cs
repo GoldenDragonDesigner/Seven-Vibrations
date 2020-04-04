@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    [Tooltip("For smoothing out the camera following the player")]
     public float cameraSmoothing = 10.0f;
-    public Vector3 offset;
+    private Vector3 offset;
 
     private void Start()
     {
