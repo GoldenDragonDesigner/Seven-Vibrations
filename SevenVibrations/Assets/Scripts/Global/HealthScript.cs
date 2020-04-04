@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthScript : MonoBehaviour
 {
-    public float maxHealth = 10;
+    public float maxHealth;
     public float curHealth;
     public bool canhurt = true;
 
@@ -27,6 +27,12 @@ public class HealthScript : MonoBehaviour
 
     void Update()
     {
-        curHealth = Mathf.Clamp(curHealth, 0, 10);
+        //curHealth = Mathf.Clamp(curHealth, 0, maxHealth);
+        CalculatingHealth();
+    }
+
+    float CalculatingHealth()
+    {
+        return curHealth / maxHealth;
     }
 }

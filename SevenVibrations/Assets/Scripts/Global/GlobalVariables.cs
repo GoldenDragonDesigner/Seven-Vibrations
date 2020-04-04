@@ -7,4 +7,6 @@ public static class GlobalVariables
     public static Player PLAYER;
 
     public static Camera CAMERA;    
+
+    public enum SpawnStates { CountingDown, Waiting, Spawning}
 }
