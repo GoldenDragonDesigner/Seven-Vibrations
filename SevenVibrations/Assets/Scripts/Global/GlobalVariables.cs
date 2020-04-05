@@ -8,5 +8,5 @@ public static class GlobalVariables
 
     public static Camera CAMERA;    
 
-    public enum SpawnStates { CountingDown, Waiting, Spawning}
+    public enum SpawnStates { CountingDown, Spawning}
 }

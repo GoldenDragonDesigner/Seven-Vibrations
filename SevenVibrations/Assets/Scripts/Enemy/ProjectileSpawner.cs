@@ -39,16 +39,12 @@ public class ProjectileSpawner : MonoBehaviour
         switch (spawnStates)
         {
             case GlobalVariables.SpawnStates.CountingDown:
-                Debug.Log("Counting Down");
+                //Debug.Log("Counting Down");
                 CountingDown();
                 break;
             case GlobalVariables.SpawnStates.Spawning:
-                Debug.Log("Spawning");
+                //Debug.Log("Spawning");
                 Spawning();
-                break;
-            case GlobalVariables.SpawnStates.Waiting:
-                Debug.Log("Waiting");
-                //Waiting();
                 break;
         }
     }

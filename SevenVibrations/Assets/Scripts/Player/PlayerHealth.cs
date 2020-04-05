@@ -11,7 +11,7 @@ public class PlayerHealth : BaseHealth
     protected override void Start()
     {
         base.Start();
-        Debug.Log(curHealth);
+        //Debug.Log(curHealth);
     }
 
     protected override void Update()
@@ -25,8 +25,8 @@ public class PlayerHealth : BaseHealth
         if (canHurt)
         {
             curHealth -= damage;
-            Debug.Log("took " + damage + " damage.");
-            Debug.Log("Unit has " + curHealth + " health remaining.");
+            //Debug.Log("took " + damage + " damage.");
+            //Debug.Log("Unit has " + curHealth + " health remaining.");
         }
         else return;
     }

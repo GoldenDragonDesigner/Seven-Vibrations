@@ -123,13 +123,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c3f4d76fbc64e4483cbdfd4fd5099d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileDeathLocation: {fileID: 0}
-  projectileDeathEffect: {fileID: 0}
+  projectileDeathLocation: {fileID: 7206875523117740546}
+  projectileDeathEffect: {fileID: 5055562258704918721, guid: a5e14a78f33de124381d6555ae7e1fc2,
+    type: 3}
   Projectile: {fileID: 7206875523117740549}
-  speed: 5
+  blastRadius: {fileID: 0}
   minRange: 10
   maxRange: 50
   minDamageRange: 5
   maxDamageRange: 15
-  damage: 0
   player: {fileID: 0}
+  hasHit: 0
