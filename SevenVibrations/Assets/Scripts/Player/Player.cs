@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
         playerHealth = GetComponent<PlayerHealth>();
 
         playerMove = GetComponent<PlayerMovement>();
-        //pm = GetComponent<Movement>();
+
     }
 
     private void Start()
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     {
         PlayerData data = SaveSystem.LoadPlayer();
 
-        //curHeatlh = data.health;
+        //Not sure if we need this /*playerHealth = GetComponent<PlayerHealth>().CalculatingHealth();*/ //need to figure out how to save the players health info
 
         Vector3 position;
         position.x = data.position[0];

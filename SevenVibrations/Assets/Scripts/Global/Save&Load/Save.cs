@@ -8,6 +8,8 @@ public class Save : MonoBehaviour
     //Things we wanna save
     [SerializeField] public List<List<float>> playerPosition = new List<List<float>>();
 
+    [SerializeField] public float health;
+
     public List<float> SavePosition(Vector3 position)
     {
         List<float> positionList = new List<float>();
@@ -16,6 +18,11 @@ public class Save : MonoBehaviour
         positionList.Add(position.z);
 
         return positionList;
+    }
+
+    public float SavePlayerHeath()
+    {
+        return health = GetComponent<PlayerHealth>().CalculatingHealth();
     }
 
     public Vector3 LoadPosition(List<float> floats)

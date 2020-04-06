@@ -3,30 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealth : BaseHealth
+public class PlayerHealth : MonoBehaviour
 {
     [Tooltip("Can the Player be hurt?")]
     public bool canHurt = true;
 
-    protected override void Start()
+    [Tooltip("This is the current health of the player.  For reference only")]
+    [SerializeField]
+    private float curHealth;
+
+    [SerializeField]
+    [Tooltip("This is the Units Max Health.")]
+    public float maxHealth;
+
+    [SerializeField]
+    [Tooltip("Add the units Health Bar here")]
+    public Slider healthSlider;
+
+    // Start is called before the first frame update
+    private void Start()
     {
-        base.Start();
-        //Debug.Log(curHealth);
+        curHealth = maxHealth;
+        healthSlider.value = CalculatingHealth();
     }
 
-    protected override void Update()
+    // Update is called once per frame
+    private void Update()
     {
-        base.Update();
-
+        healthSlider.value = CalculatingHealth();
     }
+
+    public float CalculatingHealth()
+    {
+        return (curHealth / maxHealth);
+    }
+
+
+
 
     public void Damage(float damage)
     {
         if (canHurt)
         {
             curHealth -= damage;
-            //Debug.Log("took " + damage + " damage.");
-            //Debug.Log("Unit has " + curHealth + " health remaining.");
         }
         else return;
     }

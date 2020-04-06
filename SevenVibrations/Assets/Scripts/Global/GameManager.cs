@@ -15,11 +15,6 @@ public class GameManager : MonoBehaviour
     public bool gameStart = false;
     public bool gamePause = false;
 
-    [Header("Time Limit Slider")]
-    public float timeLimitLeft;
-    public float timeMax;
-    public Slider countDownSlider;
-
     [Header("Game Pause Variables")]
     public GameObject pauseMenu;
     public PlayerFollow playerFollow;

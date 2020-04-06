@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class ProjectileSpawner : MonoBehaviour
 {
+    [Tooltip("Add the projectile prefab here")]
     public GameObject projectile;
 
-    public float timeBetweenSpawns;
+    private float timeBetweenSpawns; //the amount that is set and equals to the startTimeBetweenSpawns
 
-    public float startTimeBetweenSpawns;
+    private float startTimeBetweenSpawns; //the amount that will count down
 
-    public Transform spawnPoint;
+    private Transform spawnPoint; //this is the spawn point for the projectile
 
+    [Tooltip("What state is the spawner in right now")]
     public GlobalVariables.SpawnStates spawnStates;
 
+    [Tooltip("Is the spawner waiting?")]
     public bool waiting = true;
 
+    [Tooltip("Add a min amount of time that the projectile will spawn")]
     public int minRange;
 
+    [Tooltip("Add a max amount of time that the projectile will spawn")]
     public int maxRange;
 
     // Start is called before the first frame update
@@ -59,7 +64,7 @@ public class ProjectileSpawner : MonoBehaviour
 
             spawnStates = GlobalVariables.SpawnStates.Spawning;
         }
-        else //if(timeBetweenSpawns >= 0)
+        else
         {
             timeBetweenSpawns -= Time.deltaTime;
         }
@@ -76,22 +81,4 @@ public class ProjectileSpawner : MonoBehaviour
             spawnStates = GlobalVariables.SpawnStates.CountingDown;
         }
     }
-
-    //void Waiting()
-    //{
-    //    if(spawnPoint != null)
-    //    {
-    //        if(timeBetweenSpawns <= 0)
-    //        {
-    //            waiting = false;
-    //            spawnStates = GlobalVariables.SpawnStates.Spawning;
-    //            timeBetweenSpawns = startTimeBetweenSpawns = Random.Range(minRange, maxRange);
-    //        }
-    //        else
-    //        {
-    //            waiting = true;
-    //            spawnStates = GlobalVariables.SpawnStates.CountingDown;
-    //        }
-    //    }
-    //}
 }

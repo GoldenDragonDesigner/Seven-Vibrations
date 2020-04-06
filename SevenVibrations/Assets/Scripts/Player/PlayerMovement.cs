@@ -17,8 +17,6 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private Camera mainCamera;
 
-    //private string ParamterState = "State";
-
     private void Awake()
     {
         motor = GetComponent<Movement>();
@@ -52,9 +50,6 @@ public class PlayerMovement : MonoBehaviour
 
             direction *= speed * (Vector3.Dot(transform.forward, direction) + 1f) * 5f;
             motor.Move(direction);
-
-            //AnimationMove(motor.charcontroller.velocity.magnitude * 0.1f);
-
         }
 
     }

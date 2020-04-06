@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float gravityMulitpiler = 1;
-    public float lerpTime = 10f;
+    private float gravityMulitpiler = 1;
+    private float lerpTime = 10f;
 
     private Vector3 moveDir = Vector3.zero;
     private Vector3 targetDir = Vector3.zero;
 
     private float fallVelocity = 0f;
 
-    public CharacterController charController;
+    private CharacterController charController;
 
-    public float disToGround = 0.1f;
+    private float disToGround = 0.1f;
 
     private bool isGrounded;
 

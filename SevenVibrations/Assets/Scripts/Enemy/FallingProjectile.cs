@@ -13,9 +13,6 @@ public class FallingProjectile : MonoBehaviour
     [Tooltip("This is the projectile Game Object itself")]
     public GameObject Projectile;
 
-    //[Tooltip("This is the blast radius")]
-    //public GameObject blastRadius;
-
     //[Tooltip("This is the speed at which the projectile will fall to the ground.  It is for reference only")]
     private float speed;
     [Header("Speed")]
@@ -51,9 +48,6 @@ public class FallingProjectile : MonoBehaviour
 
         damage = Random.Range(minDamageRange, maxDamageRange);
         //Debug.Log(damage);
-
-        //blastRadius.SetActive(false);
-        //Debug.Log("Setting the blast radius to false at start");
 
         hasHit = false;
     }
@@ -92,17 +86,11 @@ public class FallingProjectile : MonoBehaviour
     {
         if(hasHit == true)
         {
-            Debug.Log("Instantiating the explosion");
+            //Debug.Log("Instantiating the explosion");
             GameObject explodeFX = Instantiate(projectileDeathEffect, projectileDeathLocation.transform.position, projectileDeathLocation.transform.rotation);
             Destroy(explodeFX, 3f);
             Destroy(gameObject);
-            Debug.Log("Projectile destroyed");
-            //Debug.Log("activating the blast radius");
-            ////blastRadius.SetActive(true);
-
-            //if (blastRadius)
-            //{
-            //}
+            //Debug.Log("Projectile destroyed");
         }
     }
 }

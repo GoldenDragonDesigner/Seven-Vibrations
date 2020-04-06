@@ -4,9 +4,9 @@ using UnityEngine;
 
 public static class GlobalVariables
 {
-    public static Player PLAYER;
-
-    public static Camera CAMERA;    
+    public static Player PLAYER;    
 
     public enum SpawnStates { CountingDown, Spawning}
+
+    public enum PlantStates { Growing, DoneGrowing}
 }

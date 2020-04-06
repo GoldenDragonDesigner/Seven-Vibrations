@@ -12,7 +12,7 @@ public class PlayerData : MonoBehaviour
 
     public PlayerData(Player player)
     {
-        //health = player.playerHealth; //need to figure out a way to save the players health
+        health = GetComponent<PlayerHealth>().CalculatingHealth(); //need to figure out a way to save the players health
 
         position = new float[3];
         position[0] = GlobalVariables.PLAYER.transform.position.x;
