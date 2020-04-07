@@ -1,21 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    //public Movement pM;
+    [Tooltip("Can the Player be hurt?")]
+    public bool canHurt = true;
+
+    [Tooltip("This is the current health of the player.  For reference only")]
+    public float curHealth;
+
+    [SerializeField]
+    [Tooltip("This is the Units Max Health.")]
+    public float maxHealth;
+
+    [SerializeField]
+    [Tooltip("Add the units Health Bar here")]
+    public Slider healthSlider;
 
     public PlayerMovement playerMove;
-
-    public PlayerHealth playerHealth;
 
     public GameObject forcefield;
 
     private void Awake()
     {
         GlobalVariables.PLAYER = this;
-        playerHealth = GetComponent<PlayerHealth>();
 
         playerMove = GetComponent<PlayerMovement>();
 
@@ -23,6 +33,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        curHealth = maxHealth;
+        healthSlider.value = CalculatingHealth();
         forcefield.SetActive(false);
     }
 
@@ -35,7 +47,7 @@ public class Player : MonoBehaviour
     {
         PlayerData data = SaveSystem.LoadPlayer();
 
-        //Not sure if we need this /*playerHealth = GetComponent<PlayerHealth>().CalculatingHealth();*/ //need to figure out how to save the players health info
+        curHealth = data.health; //need to figure out how to save the players health info
 
         Vector3 position;
         position.x = data.position[0];
@@ -47,19 +59,35 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        healthSlider.value = CalculatingHealth();
+
         if (Input.GetKeyDown(KeyCode.K))
         {
             forcefield.SetActive(true);
             if(forcefield == true)
             {
-                playerHealth.canHurt = false;
+                canHurt = false;
                 Debug.Log("Player taking no damage");
             }
         }
         if (Input.GetKeyDown(KeyCode.U))
         {
             forcefield.SetActive(false);
-            playerHealth.canHurt = true;
+            canHurt = true;
         }
+    }
+
+    public float CalculatingHealth()
+    {
+        return (curHealth / maxHealth);
+    }
+
+    public void Damage(float damage)
+    {
+        if (canHurt)
+        {
+            curHealth -= damage;
+        }
+        else return;
     }
 }

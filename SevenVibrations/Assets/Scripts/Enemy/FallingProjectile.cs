@@ -76,7 +76,7 @@ public class FallingProjectile : MonoBehaviour
         {
             hasHit = true;
 
-            player.GetComponent<PlayerHealth>().Damage(damage);
+            player.GetComponent<Player>().Damage(damage);
             //Debug.Log("Damaging the player with " + damage + " amount");
             Explosion();
         }
