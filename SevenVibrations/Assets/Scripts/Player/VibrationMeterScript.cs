@@ -1,57 +1,74 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Windows.Speech;
+using UnityEngine.UI;
 
 public class VibrationMeterScript : MonoBehaviour
 {
     public bool useMicrophone;
-    string microphone;
-    float vibration;
-    AudioSource adsource;
-    float[] samples;
+    public float vibration;
+    public string phrase;
+    KeywordRecognizer keywordRecognizer;
+    float timer = 0;
+    public bool keywordOn = true;
+
+    private Dictionary<string, Action> actions = new Dictionary<string, Action>();
 
 
     void Start()
     {
-        adsource = GetComponent<AudioSource>();
-
-        if (Microphone.devices.Length > 0)
-        {
-            microphone = Microphone.devices[0].ToString();
-        }
-        else useMicrophone = false;
+        actions.Add(phrase, Vibrate);
+        keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
+        keywordRecognizer.OnPhraseRecognized += WordSaid;
     }
 
     
     void Update()
     {
-        Vibrate();
+        timer -= Time.deltaTime;
+        timer = Mathf.Clamp(timer, 0, 5);
+
+        if(useMicrophone && keywordOn && timer == 0)
+        {
+            keywordOn = false;
+            keywordRecognizer.Start();
+            Debug.Log("Recognizer on");
+        }
+
+        while (timer != 0)
+        {
+            vibration += .03f;
+            timer = Mathf.Clamp(vibration, 0, 100);
+            Debug.Log(vibration);
+        }
+    }
+
+    private void WordSaid(PhraseRecognizedEventArgs speech)
+    {
+        Debug.Log(speech.text);
+        actions[speech.text].Invoke();
     }
 
     void Vibrate()
     {
-        if (useMicrophone)
-        {
-            Debug.Log("recording");
-           adsource.clip = Microphone.Start(microphone, true, 5, 44100);
-            adsource.loop = true;
-            while (!(Microphone.GetPosition(null) > 0))
-            {
-                adsource.Play();
-                AudioListener.GetOutputData(samples, 0);
-                Debug.Log(samples.ToString());
-            }
-        }
-        else Microphone.End(microphone);
+        timer = 2;
+        //keywordOn = true;
+        Debug.Log("Vibrating");
+    }
 
-        foreach(float sample in samples)
-        {
-            if(sample > 0)
-            {
-                vibration += Time.deltaTime * 2;
-                vibration = Mathf.Clamp(vibration, 0, 100);
-                Debug.Log("Vibration is at " + vibration.ToString());
-            }
-        }
+    private void OnTriggerEnter(Collider other)
+    {
+        useMicrophone = true;
+        Debug.Log("entered trigger volume");
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        useMicrophone = false;
+        keywordRecognizer.Stop();
+        Debug.Log("left trigger volume");
     }
 }
