@@ -17,6 +17,10 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private Camera mainCamera;
 
+    //floating
+    bool canFloat;
+    float floatposition;
+
     private void Awake()
     {
         motor = GetComponent<Movement>();
@@ -34,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         MovementAndJumping();
+        Float();
     }
 
     private Vector3 MoveDirection
@@ -65,6 +70,29 @@ public class PlayerMovement : MonoBehaviour
         motor.Jump(speedJump);
     }
 
+    void Float()
+    {
+        if (canFloat)
+        {
+            transform.position = new Vector3(transform.position.x, floatposition, transform.position.z);
+            //GetComponent<VibrationMeterScript>().vibration -= .03f;
+        }
+
+        Debug.Log(canFloat);
+
+
+        if (Input.GetKeyDown(KeyCode.F) && !canFloat)
+        {
+            floatposition = transform.position.y;
+            canFloat = true;
+            Debug.Log("Floating");
+        }
+        else if(Input.GetKeyDown(KeyCode.F) && canFloat)
+        {
+            canFloat = false;
+        }
+    }
+
     void MovementAndJumping()
     {
         Vector3 moveInput = Vector3.zero;
@@ -77,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
         moveInput.Normalize();
         Moving(moveInput.normalized, 1f);
 
-        if (Input.GetKey(KeyCode.Space) || Input.GetButton("Jump"))
+        if ((Input.GetKey(KeyCode.Space) || Input.GetButton("Jump")) && canFloat == true)
         {
             Jump();
         }
