@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     //floating
     bool canFloat;
     float floatposition;
+    GameObject floatingSprite;
 
     private void Awake()
     {
@@ -31,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         //anim.applyRootMotion = false;
+        floatingSprite = GameObject.Find("FloatingSprite").gameObject;
+        floatingSprite.SetActive(false);
         mainCamera = Camera.main;
     }
 
@@ -85,11 +88,14 @@ public class PlayerMovement : MonoBehaviour
         {
             floatposition = transform.position.y;
             canFloat = true;
+            floatingSprite.gameObject.SetActive(true);
+            Debug.Log(transform.GetChild(6));
             Debug.Log("Floating");
         }
         else if(Input.GetKeyDown(KeyCode.F) && canFloat)
         {
             canFloat = false;
+            floatingSprite.gameObject.SetActive(false);
         }
     }
 
