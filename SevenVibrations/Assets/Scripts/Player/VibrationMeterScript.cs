@@ -17,6 +17,8 @@ public class VibrationMeterScript : MonoBehaviour
 
     private Dictionary<string, Action> actions = new Dictionary<string, Action>();
 
+    public Slider vibrationMeter;
+
 
     void Start()
     {
@@ -63,6 +65,7 @@ public class VibrationMeterScript : MonoBehaviour
     {
         useMicrophone = true;
         Debug.Log("entered trigger volume");
+        keywordRecognizer.Start();
     }
 
     private void OnTriggerExit(Collider other)

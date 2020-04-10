@@ -28,6 +28,9 @@ public class GrowingPlant : MonoBehaviour
     [Tooltip("Add the Game object parts here")]
     public GameObject[] growingPlant;
 
+
+    public int plantPartsNum = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,8 @@ public class GrowingPlant : MonoBehaviour
         timeCountingDown = countDownTime = Random.Range(maxGrowthRange, maxGrowthRange);
 
         plantStates = GlobalVariables.PlantStates.Growing;
+
+        //plantPartsNum = 0;
 
         foreach(GameObject part in growingPlant)
         {
@@ -87,11 +92,15 @@ public class GrowingPlant : MonoBehaviour
     public bool Growing()
     {
         //Debug.Log("The number of Plants are: " + growingPlant.Length);
-        int i = 0;
+        //int i = plantPartsNum;
+
+        plantPartsNum = 0;
+        
         foreach(GameObject plant in growingPlant)
         {
             //Debug.Log("Plant count: " + i);
-            i++;
+            //plantPartsNum++;
+            plantPartsNum++;
             if (!plant.activeSelf)
             {
                 plant.SetActive(true);
