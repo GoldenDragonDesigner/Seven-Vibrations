@@ -63,15 +63,21 @@ public class VibrationMeterScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        useMicrophone = true;
-        Debug.Log("entered trigger volume");
-        keywordRecognizer.Start();
+        if(other.gameObject.tag == "Player")
+        {
+            useMicrophone = true;
+            Debug.Log("entered trigger volume");
+            keywordRecognizer.Start();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        useMicrophone = false;
-        keywordRecognizer.Stop();
-        Debug.Log("left trigger volume");
+        if (other.gameObject.tag == "Player")
+        {
+            useMicrophone = false;
+            keywordRecognizer.Stop();
+            Debug.Log("left trigger volume");
+        }
     }
 }

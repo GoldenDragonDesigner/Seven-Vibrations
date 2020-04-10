@@ -111,7 +111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3900559570895141679}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.14, y: 1.5, z: -1.93}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3900559572893369402}
@@ -169,7 +169,7 @@ MonoBehaviour:
   canHurt: 1
   curHealth: 0
   maxHealth: 0
-  healthSlider: {fileID: 0}
+  healthSlider: {fileID: 1887808138034547391}
   playerMove: {fileID: 0}
   forcefield: {fileID: 4698477652973589866}
 --- !u!114 &3900559570895141674
@@ -216,6 +216,7 @@ MonoBehaviour:
   vibration: 0
   phrase: the cat
   keywordOn: 0
+  vibrationMeter: {fileID: 0}
 --- !u!1 &3900559571500353298
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,3 +812,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 8300248338953203952}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1887808138034547391 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7566804511779519055, guid: bed8af21c6afa5145a06ccf8f55efa1e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8300248338953203952}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
