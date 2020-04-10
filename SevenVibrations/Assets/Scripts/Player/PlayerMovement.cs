@@ -89,7 +89,6 @@ public class PlayerMovement : MonoBehaviour
             floatposition = transform.position.y;
             canFloat = true;
             floatingSprite.gameObject.SetActive(true);
-            Debug.Log(transform.GetChild(6));
             Debug.Log("Floating");
         }
         else if(Input.GetKeyDown(KeyCode.F) && canFloat)
