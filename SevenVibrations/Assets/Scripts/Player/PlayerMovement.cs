@@ -32,7 +32,10 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         //anim.applyRootMotion = false;
-        floatingSprite = GameObject.Find("FloatingSprite").gameObject;
+
+        //floating sprite must be number 4 in the parent hierarchy
+        floatingSprite = transform.GetChild(4).gameObject;
+        Debug.Log(transform.GetChild(4).gameObject);
         floatingSprite.SetActive(false);
         mainCamera = Camera.main;
     }
