@@ -113,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
         moveInput.Normalize();
         Moving(moveInput.normalized, 1f);
 
-        if ((Input.GetKey(KeyCode.Space) || Input.GetButton("Jump")) && canFloat == true)
+        if ((Input.GetKey(KeyCode.Space) || Input.GetButton("Jump")) && canFloat == false)
         {
             Jump();
         }
