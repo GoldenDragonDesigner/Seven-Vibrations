@@ -8,20 +8,18 @@ public class Player : MonoBehaviour
     [Tooltip("Can the Player be hurt?")]
     public bool canHurt = true;
 
-    [Tooltip("This is the current health of the player.  For reference only")]
-    public float curHealth;
+    //[Tooltip("This is the current health of the player.  For reference only")]
+    private float curHealth;
 
     [SerializeField]
     [Tooltip("This is the Units Max Health.")]
     public float maxHealth;
 
-    [SerializeField]
-    [Tooltip("Add the units Health Bar here")]
-    public Slider healthSlider;
+    private Slider healthSlider;
 
-    public PlayerMovement playerMove;
+    private PlayerMovement playerMove;
 
-    public GameObject forcefield;
+    private GameObject forcefield;
 
     private void Awake()
     {
@@ -29,6 +27,9 @@ public class Player : MonoBehaviour
 
         playerMove = GetComponent<PlayerMovement>();
 
+        healthSlider = GameObject.Find("PlayerHealthBarSlider").GetComponent<Slider>();
+
+        forcefield = transform.GetChild(2).gameObject;
     }
 
     private void Start()
