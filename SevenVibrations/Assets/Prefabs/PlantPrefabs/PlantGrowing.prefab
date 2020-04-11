@@ -1443,6 +1443,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5182050775710901382}
+  - component: {fileID: 8020164715096634953}
   m_Layer: 0
   m_Name: PlantGrowing
   m_TagString: Untagged
@@ -1482,6 +1483,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8020164715096634953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5588313078486219816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ada751e4dd3a645bb503c84567847e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeCountingDown: 0
+  doneGrowing: 0
+  minGrowthRange: 1
+  maxGrowthRange: 1
+  growingPlant:
+  - {fileID: 3318419386154494796}
+  - {fileID: 8672368379148529592}
+  - {fileID: 8904047270759387127}
+  - {fileID: 1023361902450526514}
+  - {fileID: 9058087590212028803}
+  - {fileID: 5435924088250215983}
+  - {fileID: 7811360707687032013}
+  - {fileID: 6550402593978579729}
+  - {fileID: 2360873190117650964}
+  - {fileID: 8759459915632438321}
+  - {fileID: 9124895352165080099}
+  - {fileID: 5861585066086298906}
+  - {fileID: 8418421739562860002}
+  - {fileID: 1114123739884949373}
+  - {fileID: 4517615593013441483}
+  - {fileID: 7932671441532038097}
+  - {fileID: 2323163656129599323}
+  - {fileID: 3098442477755450693}
+  plantPartsNum: 0
 --- !u!1 &5861585066086298906
 GameObject:
   m_ObjectHideFlags: 0

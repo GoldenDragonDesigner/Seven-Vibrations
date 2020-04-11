@@ -8,32 +8,20 @@ using UnityEngine.UI;
 
 public class VoiceRecognition : MonoBehaviour
 {
-    //[Tooltip("Add a specific Game Object Here that is going to be manipulated by voice")]
-    //public GameObject objectToManipulate;
-    //public GameObject illumination;
-    //[Tooltip("This is the starting color you want it to start at")]
-    //public Material startingColor;
-    //[Tooltip("This is the ending color you want after the funtion has been activated")]
-    //public Material endingColor;
-
-    //public float startingLerpColorTime;
-    //public float maxStartingColorTime;
-    //public float colorToLerp;
-
     [Tooltip("The float for filling the vibration meter")]
     public float curVibration;
 
     public float maxVibration;
-    //[Tooltip("This is the smallest amount of time for the player to find the object")]
-    //public float minRange;
-    //[Tooltip("This is the largetst amount of time for the player to find the object")]
-    //public float maxRange;
+    
+    public string firstPhrase;
 
-    public string phrase;
+    //public string secondPhrase;
 
-    //public GameObject text;
+    //public string thirdPhrase;
 
-    //public GameObject field;
+    //public string fourthPhrase;
+
+    public bool useMic;
 
     public Slider vibrationMeter;
 
@@ -41,47 +29,78 @@ public class VoiceRecognition : MonoBehaviour
 
     private Dictionary<string, Action> actions = new Dictionary<string, Action>();
 
+    private void Awake()
+    {
+        vibrationMeter = GameObject.Find("VibrationMeter").GetComponent<Slider>();
+    }
+
     private void Start()
     {
-        curVibration = maxVibration;
+        Debug.Log("Setting the mic to false");
+        useMic = false;
 
         vibrationMeter.value = CalculatingVibration();
-        //text.SetActive(false);
 
-        actions.Add(phrase, Glow);
+        actions.Add(firstPhrase, Nam);
+        //actions.Add(secondPhrase, Myoho);
+        //actions.Add(thirdPhrase, Renge);
+        //actions.Add(fourthPhrase, Kyo);
+
         //actions.Add("Nam Myoho Renge Kyo", NMRK);
         //actions.Add("南無妙法蓮華教", NMRK);
+        //南無妙法蓮華經
 
         keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += WordSaid;
+    }
 
-        //illumination.SetActive(false);
-        //field.SetActive(true);
+    private void Update()
+    {
+        vibrationMeter.value = CalculatingVibration();
     }
 
     private void WordSaid(PhraseRecognizedEventArgs speech)
     {
-        Debug.Log(speech.text);
+        //Neal holding ago Debug.Log(speech.text);
         actions[speech.text].Invoke();
     }
 
-    private void Glow()
+    private void Nam()
     {
-        Debug.Log(phrase);
-        //objectToManipulate.gameObject.GetComponent<Renderer>().material = endingColor;
-        //illumination.SetActive(true);
-        //field.SetActive(false);
+        if(useMic == true)
+        curVibration += 1;
+        Debug.Log(firstPhrase + " " + curVibration);
     }
+
+    //private void Myoho()
+    //{
+    //    if (useMic == true)
+    //        curVibration += 1;
+    //    Debug.Log(secondPhrase + " " + curVibration);
+    //}
+
+    //private void Renge()
+    //{
+    //    if (useMic == true)
+    //        curVibration += 1;
+    //    Debug.Log(thirdPhrase + " " + curVibration);
+    //}
+
+    //private void Kyo()
+    //{
+    //    if (useMic == true)
+    //        curVibration += 1;
+    //    Debug.Log(fourthPhrase + " " + curVibration);
+    //}
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
-            //text.SetActive(true);
+            Debug.Log("Setting the mic to true");
+            useMic = true;
             Debug.Log("Keyword Recognizer has started");
             keywordRecognizer.Start();
-            curVibration += 1;
-            Debug.Log(curVibration);
         }
     }
 
@@ -89,10 +108,10 @@ public class VoiceRecognition : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            //text.SetActive(false);
+            Debug.Log("Setting the mic back to false");
+            useMic = false;
             Debug.Log("Exiting The trigger");
             keywordRecognizer.Stop();
-
         }
     }
 
