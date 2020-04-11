@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 3900559570895141673}
   - component: {fileID: 3900559570895141674}
   - component: {fileID: 3900559570895141652}
-  - component: {fileID: 655313304}
   m_Layer: 0
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -168,7 +167,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canHurt: 1
   maxHealth: 0
-  forcefield: {fileID: 0}
 --- !u!114 &3900559570895141674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,23 +195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0b942205e38c0449f310f5cbe3de1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &655313304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3900559570895141679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eee5fa2eabdfe0a43b82c259a06737ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useMicrophone: 0
-  vibration: 0
-  phrase: the cat
-  keywordOn: 0
-  vibrationMeter: {fileID: 0}
 --- !u!1 &3900559571500353298
 GameObject:
   m_ObjectHideFlags: 0
