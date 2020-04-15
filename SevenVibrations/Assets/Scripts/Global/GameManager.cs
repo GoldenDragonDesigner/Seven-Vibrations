@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
     public PlayerFollow playerFollow;
 
+    public List<BaseEnemy> Enemies = new List<BaseEnemy>();
+
+
     private void Awake()
     {
         if(gm != this && gm != null)

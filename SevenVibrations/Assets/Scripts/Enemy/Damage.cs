@@ -18,7 +18,7 @@ public class Damage : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         damage = Random.Range(minDamage, maxDamage);
-        //Debug.Log("the damage amount is " + damage);
+        Debug.Log("the damage amount is " + damage);
     }
     private void OnTriggerEnter(Collider other)
     {

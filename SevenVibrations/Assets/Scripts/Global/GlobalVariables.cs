@@ -9,4 +9,6 @@ public static class GlobalVariables
     public enum SpawnStates { CountingDown, Spawning}
 
     public enum PlantStates { Growing, DoneGrowing}
+
+    public enum EnemyStates { Seek, Flee, Pursue, Evade, Wander, Hide}
 }

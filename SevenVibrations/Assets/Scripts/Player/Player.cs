@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
 
         playerMove = GetComponent<PlayerMovement>();
 
-        healthSlider = GameObject.Find("PlayerHealthBarSlider").GetComponent<Slider>();
+        healthSlider = GameObject.Find("PlayerCapsule").GetComponentInChildren<Slider>();
 
         forcefield = transform.GetChild(2).gameObject;
     }
