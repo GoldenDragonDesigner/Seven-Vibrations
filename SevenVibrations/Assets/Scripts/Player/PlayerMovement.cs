@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
         //floating sprite must be number 4 in the parent hierarchy
         floatingSprite = transform.GetChild(4).gameObject;
-        Debug.Log(transform.GetChild(4).gameObject);
+        //Debug.Log(transform.GetChild(4).gameObject);
         floatingSprite.SetActive(false);
         mainCamera = Camera.main;
     }
@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
             //GetComponent<VibrationMeterScript>().vibration -= .03f;
         }
 
-        Debug.Log(canFloat);
+        //Debug.Log(canFloat);
 
 
         if (Input.GetKeyDown(KeyCode.F) && !canFloat)
